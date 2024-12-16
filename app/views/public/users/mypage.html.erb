@@ -1,0 +1,12 @@
+<h1>Public::Users#mypage</h1>
+<p>Find me in app/views/public/users/mypage.html.erb</p>
+
+<%= month_calendar(events: @posts) do |date, posts| %>
+  <%= date.day %>
+  <% if posts.any? %>
+    <%= link_to "show", post_path(posts.first) %>
+    
+  <% else %>
+    <%= link_to "new_post", new_post_path(date: date) %>
+  <% end %>
+<% end %>

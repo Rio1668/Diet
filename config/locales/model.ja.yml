@@ -1,0 +1,12 @@
+ja:
+  activerecord:
+    attributes:
+      user:
+        name: 名前
+      post:
+        weight: 体重
+        start_time: 日付
+      menu:
+        name: メニュー
+        genre_id: 部位
+        number_of_times: 回数

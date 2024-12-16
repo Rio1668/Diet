@@ -1,0 +1,35 @@
+<h1>Public::Posts#show</h1>
+
+<siv class="row">
+  <div class="col-md-4">
+    <h3>日付</h3>
+    <%= l @post.start_time %>
+    <h3>体重</h3>
+    <%= @post.weight %>kg
+    <h3>メニュ-</h3>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>メニュ-</th>
+          <th>部位</th>
+          <th>回数</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @post.menus.each do |menu| %>
+          <tr>
+            <td><%= menu.name %></td>
+            <td><%= menu.genre.name %></td>
+            <td><%= menu.number_of_times %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    
+    <%= link_to 'mypage', mypage_path, class: 'btn btn-secondary' %>
+    <%= link_to 'edit', edit_post_path(@post), class: 'btn btn-warning' %>
+  </div>
+  <div class="col-md-8">
+    <%= @post.menus.inspect %>
+  </div>
+</div>

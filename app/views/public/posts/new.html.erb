@@ -1,0 +1,10 @@
+<h1><%= @date.to_s.gsub('-', '/') %>日のdataを入力</h1>
+
+<div class="mb-4">
+  <p>体重と運動したメニューを入力できます.右側のフォームにはメニューが追加できます.</p>
+  <p>右下の"メニューを追加する"ボタンで複数のメニューを同時に登録できます</p>
+</div>
+
+<%= render 'form', post: @post, genres: @genres, date: @date %>
+
+<%= link_to 'mypage', mypage_path, class: 'btn btn-secondary' %>

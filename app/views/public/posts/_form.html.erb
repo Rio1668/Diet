@@ -1,0 +1,28 @@
+<%= form_with model: post do |f| %>
+  <%= render 'layouts/error_messages', model: f.object %>
+  <div class="row">
+    <div class="col-md-4">
+      <div class="mb-3">
+        <%= f.label :start_time %>
+        <% if post.new_record? %>
+          <%= f.date_field :start_time, value: date, class: "form-control", readonly: true %>
+        <% else %>
+          <%= f.date_field :start_time, class: "form-control", disabled: true %>
+        <% end %>
+      </div>
+      <div class="mb-3">
+        <%= f.label :weight %>
+        <%= f.number_field :weight, class: "form-control" %>
+      </div>
+      <%= f.submit "このメニューで登録する", class: "btn btn-primary btn-block" %>
+    </div>
+    <div class="col-md-8">
+      <%= f.fields_for :menus do |ff| %>
+        <%= render 'menu_fields', f: ff %>
+      <% end %>
+      <div class="links my-4 d-flex justify-content-end">
+        <%= link_to_add_association "メニューを追加する", f, :menus, class: "btn btn-success mr-3" %>
+      </div>
+    </div>
+  </div>
+<% end %>

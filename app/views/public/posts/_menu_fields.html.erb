@@ -1,0 +1,19 @@
+  <div class="nested-fields card my-3">
+    <div class="field card-body mt-3">
+      <div class="mb-2">
+        <%= f.label :name %>
+        <%= f.text_field :name, class: "form-control" %>
+      </div>
+      <div class="mb-2">
+        <%= f.label :genre_id %>
+        <%= f.collection_select :genre_id, @genres, :id, :name, { include_blank: "--部位を選択してください--" }, { class: "form-control" } %>
+      </div>
+      <div class="mb-2">
+        <%= f.label :number_of_times %>
+        <%= f.number_field :number_of_times, class: "form-control" %>
+      </div>
+      <div class="mb-2 d-flex justify-content-end">
+        <%= link_to_remove_association "このメニューを除外する", f, class: 'btn btn-danger mt-3' %>
+      </div>
+    </div>
+  </div>
