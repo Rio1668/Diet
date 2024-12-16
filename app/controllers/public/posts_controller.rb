@@ -25,6 +25,9 @@ class Public::PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
+    start = @post.start_time.ago(2.weeks)
+    finish = @post.start_time.since(2.weeks)
+    @posts = @post.user.posts.where(start_time: start..finish)
   end
   
   def edit

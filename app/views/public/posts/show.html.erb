@@ -3,7 +3,7 @@
 <siv class="row">
   <div class="col-md-4">
     <h3>日付</h3>
-    <%= l @post.start_time %>
+    <%= l(@post.start_time, format: :date) %>
     <h3>体重</h3>
     <%= @post.weight %>kg
     <h3>メニュ-</h3>
@@ -25,11 +25,12 @@
         <% end %>
       </tbody>
     </table>
-    
+
     <%= link_to 'mypage', mypage_path, class: 'btn btn-secondary' %>
     <%= link_to 'edit', edit_post_path(@post), class: 'btn btn-warning' %>
   </div>
   <div class="col-md-8">
-    <%= @post.menus.inspect %>
+    <%= line_chart @posts.map { |post| [ l(post.start_time, format: :date), post.weight] } %>
   </div>
 </div>
+
