@@ -15,10 +15,12 @@ class Public::PostsController < ApplicationController
   def create
     @post = current_user.posts.build(post_params)
     if @post.save
+      flash[:notice] = "投稿しました"
       redirect_to post_path(@post)
     else
       @date = params[:date].present? ? Date.parse(params[:date]) : Date.today
       @genres = Genre.all
+      flash.now[:alert] = "投稿に失敗しました"
       render :new
     end
   end
@@ -36,15 +38,18 @@ class Public::PostsController < ApplicationController
   
   def update
     if @post.update(post_params)
+      flash[:notice] = "投稿しました"
       redirect_to post_path(@post)
     else
       @genres = Genre.all
+      flash.now[:alert] = "投稿に失敗しました"
       render :edit
     end
   end
   
   def destroy
     @post.destroy
+    flash[:success] = "投稿を削除しました"
     redirect_to posts_path
   end 
   

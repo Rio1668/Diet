@@ -28,9 +28,15 @@
 
     <%= link_to 'mypage', mypage_path, class: 'btn btn-secondary' %>
     <%= link_to 'edit', edit_post_path(@post), class: 'btn btn-warning' %>
+    <%= link_to 'destroy', post_path(@post), method: :delete, class: 'btn btn-danger', data: { confirm: "本当に削除しますか?" } %>
   </div>
   <div class="col-md-8">
-    <%= line_chart @posts.map { |post| [ l(post.start_time, format: :date), post.weight] } %>
+    <div>
+      <canvas id="myChart" data-target="<%= @post.id %>"></canvas>
+    </div>
   </div>
 </div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<%= javascript_pack_tag "line_chart.js" %>
 

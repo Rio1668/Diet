@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   
   scope module: :public do
     root 'homes#top'
+    get "/home/about", to: "homes#about", as: "about"
     resources :posts
     get 'mypage', to: 'users#mypage'
   end
