@@ -1,0 +1,35 @@
+<h1>グループ詳細</h1>
+
+<div class="row">
+  <div class="col-md-4">
+    <h3>グループ名</h3>
+    <%= @group.name %>
+
+    <h3>概要</h3>
+    <%= @group.body %>
+
+    <h3>作成者</h3>
+    <%= link_to @group.user.name, user_path(@group.user) %>
+
+    <div class="my-4">
+      <%= render 'public/group_users/group_button', group: @group if user_signed_in? %>
+    </div>
+
+    <div class="my-4">
+      <%= render 'public/users/users', users: @users %>
+    </div>
+  </div>
+  <div class="col-md-8">
+    <%= render 'public/comments/comments', comments: @comments %>
+    <% if current_user && @group.users.include?(current_user) %>
+      <%= render 'public/comments/form', group: @group, comment: @comment %>
+    <% else %>
+      <p class="ml-2">コメントするにはグル-プに参加する必要があります</p>
+    <% end %>
+  </div>
+</div>
+
+<% if current_user && current_user == @group.user %>
+  <%= link_to "edit", edit_group_path(@group), class: "btn btn-warning" %>
+  <%= link_to "destroy", group_path(@group), method: :delete, class: "btn btn-danger", data: { confirm: "本当に削除しますか?" } %>
+<% end %>

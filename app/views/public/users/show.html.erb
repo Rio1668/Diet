@@ -1,0 +1,11 @@
+<h1>Userの詳細</h1>
+
+<div class="row">
+  <div class="col-md-3">
+    <%= @user.inspect %>
+  </div>
+  <div class="col-md-9">
+    <%= render 'public/groups/groups', groups: @user.groups %>
+  </div>
+</div>
+

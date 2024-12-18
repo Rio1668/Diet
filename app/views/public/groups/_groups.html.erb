@@ -1,0 +1,24 @@
+<% if groups.any? %>
+  <table class="table">
+    <thead>
+      <tr>
+        <th><%= t 'activerecord.attributes.group.name' %></th>
+        <th><%= t 'activerecord.attributes.group.body' %></th>
+        <th><%= t 'activerecord.attributes.group.user_id' %></th>
+        <th>詳細</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% groups.each do |group| %>
+        <tr>
+          <td><%= group.name %></td>
+          <td><%= group.body %></td>
+          <td><%= link_to group.user.name, group.user %></td>
+          <td><%= link_to "詳細", group, class: "btn btn-outline-primary" %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <h4>グループはありません</h4>
+<% end %>

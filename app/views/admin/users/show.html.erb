@@ -1,0 +1,30 @@
+<div class="row">
+  <div class="col-md-4">
+    <h1>User詳細</h1>
+    <table class="table table-bordered">
+      <tbody>
+        <tr>
+          <th>id</th>
+          <td><%= @user.id %></td>
+        </tr>
+        <tr>
+          <th><%= t 'activerecord.attributes.user.name' %></th>
+          <td><%= @user.name %></td>
+        </tr>
+        <tr>
+          <th><%= t 'activerecord.attributes.user.email' %></th>
+          <td><%= @user.email %></td>
+        </tr>
+      </tbody>
+    </table>
+    <%= link_to '削除', admin_user_path(@user),
+              class: "btn btn-danger",
+              method: :delete,
+              data: { confirm: "本当に削除しますか?" } %>
+  </div>
+  <div class="col-md-8">
+    <h2>このUserの投稿したコメント</h2>
+    <%= render 'admin/comments/comments', comments: @comments %>
+  </div>
+</div>
+

@@ -1,0 +1,25 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th>id</th>
+      <th><%= t 'activerecord.attributes.comment.body' %></th>
+      <th><%= t 'activerecord.attributes.comment.user_id' %></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% comments.each do |comment| %>
+      <tr>
+        <td><%= comment.id %></td>
+        <td><%= simple_format comment.body %></td>
+        <td><%= link_to_if params[:action] != 'show', comment.user.name, admin_user_path(comment.user) %></td>
+        <td>
+          <%= link_to '削除', admin_comment_path(comment),
+              class: "btn btn-outline-danger",
+              method: :delete,
+              data: { confirm: "本当に削除しますか?" } %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

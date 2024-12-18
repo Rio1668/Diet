@@ -1,0 +1,16 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th>参加者の名前</th>
+    <tr>
+  </thead>
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td>
+          <%= link_to user.name, user, class: "btn btn-block" %> 
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

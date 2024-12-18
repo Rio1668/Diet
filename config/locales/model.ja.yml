@@ -10,3 +10,10 @@ ja:
         name: メニュー
         genre_id: 部位
         number_of_times: 回数
+      group:
+        name: グループ名
+        body: 概要
+        user_id: 作成者
+      comment:
+        body: コメント
+        user_id: 投稿者

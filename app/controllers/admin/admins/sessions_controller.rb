@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
-class Public::Users::SessionsController < Devise::SessionsController
+class Admin::Admins::SessionsController < Devise::SessionsController
+  layout 'admin'
   # before_action :configure_sign_in_params, only: [:create]
 
   # GET /resource/sign_in
@@ -10,7 +11,7 @@ class Public::Users::SessionsController < Devise::SessionsController
 
   # POST /resource/sign_in
   def create
-    sign_out(current_admin) if current_admin
+    sign_out(current_user) if current_user
     super
   end
 
@@ -27,12 +28,12 @@ class Public::Users::SessionsController < Devise::SessionsController
   # end
   
   #ログインしたときに移動させたい繊維石のパス
-  #def after_sign_in_path_for(resource)
-    #user_path(resource)
-  #end
+  def after_sign_in_path_for(resource)
+    admin_root_path
+  end
   
   #ログアウトしたときに移動させたい繊維石のパス
-  #def after_sign_out_path_for(resource)
-    #new_user_session_path
-  #end
+  def after_sign_out_path_for(resource)
+    new_admin_session_path
+  end
 end

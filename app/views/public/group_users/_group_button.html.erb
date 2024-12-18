@@ -1,0 +1,5 @@
+<% if current_user.join_group?(group) %>
+  <%= link_to "グループから抜ける", group_group_users_path(group), method: :delete, class: "btn btn-danger" %>
+<% else %>
+  <%= link_to "グループに参加する", group_group_users_path(group), method: :post, class: "btn btn-primary" %>
+<% end %>

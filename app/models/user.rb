@@ -5,4 +5,20 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
          
   has_many :posts, dependent: :destroy
+  has_many :groups, dependent: :destroy
+  has_many :group_users, dependent: :destroy
+  has_many :joined_groups, through: :group_users, source: :group
+  has_many :comments, dependent: :destroy
+  
+  def join_group(group)
+    self.group_users.find_or_create_by(group: group)
+  end
+  
+  def detach_group(group)
+    self.group_users.find_by(group: group)&.destroy
+  end
+  
+  def join_group?(group)
+    self.joined_groups.include?(group)
+  end
 end

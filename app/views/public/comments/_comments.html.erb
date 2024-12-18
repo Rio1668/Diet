@@ -1,0 +1,31 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th><%= t 'activerecord.attributes.comment.body' %>
+      <th><%= t 'activerecord.attributes.comment.user_id' %>
+      <th>投稿日時</th>
+      <th>
+    </tr>
+  </thead>
+  <tbody>
+    <% if comments.any? %>
+      <% comments.each do |comment| %>
+        <tr>
+          <td><%= simple_format comment.body %></td>
+          <td><%= comment.user.name %>
+          <td><%= l comment.created_at, format: :short %></td>
+          <td>
+            <% if current_user && current_user == comment.user %>
+              <%= link_to "削除", comment, method: :delete,
+                class: "btn btn-danger", data: { confirm: "本当に削除しますか?" } %>
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+    <% else %>
+      <tr>
+        <td colspan="4">コメントはまだありません</td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
