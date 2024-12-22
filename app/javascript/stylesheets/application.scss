@@ -1,2 +1,14 @@
 @use '~bootstrap/scss/bootstrap';
 @use './simple_calendar.scss';
+
+.bg_area {
+  background-image: url('../images/bg_area.jpg');
+  background-size: 100%;
+  background-repeat: no-repeat;
+  height: 80vh;
+  background-position: center;
+}
+
+.bg_area .container{
+  color: #111111;
+}
