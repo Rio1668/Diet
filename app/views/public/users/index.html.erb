@@ -1,0 +1,22 @@
+<h1>User一覧</h1>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th><%= t 'activerecord.attributes.user.name' %></th>
+        <th></th>
+        <th></th>
+        <th>詳細</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @users.each do |user| %>
+        <tr>
+          <td><%= user.name %></td>
+          <td></td>
+          <td></td>
+          <td><%= link_to "詳細", user_path(user), class: "btn btn-outline-primary" %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>

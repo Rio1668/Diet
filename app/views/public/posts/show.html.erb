@@ -1,16 +1,14 @@
-<h1>Public::Posts#show</h1>
+<h1>メニュー詳細</h1>
 
 <siv class="row">
   <div class="col-md-4">
-    <h3>日付</h3>
-    <%= l(@post.start_time, format: :date) %>
-    <h3>体重</h3>
-    <%= @post.weight %>kg
-    <h3>メニュ-</h3>
+    <h3>日付: <%= l(@post.start_time, format: :date) %></h3><br>
+    <h3>体重: <%= @post.weight %>kg</h3><br>
+    <h3>メニュー</h3><br>
     <table class="table">
       <thead>
         <tr>
-          <th>メニュ-</th>
+          <th>メニュー</th>
           <th>部位</th>
           <th>回数</th>
         </tr>

@@ -1,12 +1,14 @@
-<h1>Public::Users#mypage</h1>
-<p>Find me in app/views/public/users/mypage.html.erb</p>
+<h1>My Page</h1>
 
+<%= link_to "User詳細", user_path(@user), class: "btn btn-outline-primary" %>
+<br>
+<br>
 <%= month_calendar(events: @posts) do |date, posts| %>
   <%= date.day %>
   <% if posts.any? %>
-    <%= link_to "show", post_path(posts.first), data: { turbolinks: false } %>
+    <%= link_to "Show", post_path(posts.first), data: { turbolinks: false } %>
     
   <% else %>
-    <%= link_to "new_post", new_post_path(date: date) %>
+    <%= link_to "New Post", new_post_path(date: date) %>
   <% end %>
 <% end %>

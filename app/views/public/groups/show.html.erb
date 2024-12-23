@@ -1,15 +1,24 @@
 <h1>グループ詳細</h1>
-
 <div class="row">
   <div class="col-md-4">
-    <h3>グループ名</h3>
-    <%= @group.name %>
-
-    <h3>概要</h3>
-    <%= @group.body %>
-
-    <h3>作成者</h3>
-    <%= link_to @group.user.name, user_path(@group.user) %>
+    <table class="table table-striped">
+      <thead>
+      </thead>
+      <tbody>
+        <tr>
+          <th>グループ名:</th>
+          <th><%= @group.name %></th>
+        </tr>
+        <tr>
+          <th>作成者</th>
+          <th><%= link_to @group.user.name, user_path(@group.user) %></th>
+        </tr>
+        <tr>
+          <th>概要:</th>
+          <th><%= @group.body %></th>
+        </tr>
+      </tbody>
+    </table>
 
     <div class="my-4">
       <%= render 'public/group_users/group_button', group: @group if user_signed_in? %>

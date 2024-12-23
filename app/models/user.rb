@@ -21,4 +21,16 @@ class User < ApplicationRecord
   def join_group?(group)
     self.joined_groups.include?(group)
   end
+  
+  def self.guest_log_in
+    user = User.find_or_initialize_by(email: 'guest@guest.com')
+    if user.new_record?
+      user.assign_attributes(
+          name: 'ゲスト'
+      )
+    end
+    user.password = SecureRandom.hex(10)
+    user.save
+    user
+  end
 end

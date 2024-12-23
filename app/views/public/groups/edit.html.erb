@@ -1,5 +1,11 @@
-<h1>グループ編集</h1>
-
-<%= render 'form', group: @group %>
-
+<div class="col-md-7 offset-md-2">
+  <div class="card my-5">
+    <div class="card-body">
+      <h2 class="d-flex justify-content-center mb-3">グループ編集</h2>
+      
+      <%= render 'form', group: @group %>
+        
+    </div>
+  </div>
+</div>
 <%= link_to "グループ詳細へ", group_path(@group), class: "btn btn-secondary" %>

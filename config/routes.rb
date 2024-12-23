@@ -13,8 +13,9 @@ Rails.application.routes.draw do
     root 'homes#top'
     get "/home/about", to: "homes#about", as: "about"
 
-    resources :users, only: [:show, :edit, :update, :destroy]
+    resources :users, only: [:show, :index, :edit, :update, :destroy]
     get 'mypage', to: 'users#mypage'
+    post 'guest_log_in', to: 'users#guest_log_in'
 
     resources :groups do
       resource :group_users, only: [:create, :destroy]

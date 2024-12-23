@@ -2,22 +2,32 @@
 
 <div class="row">
   <div class="col-md-4">
-    <h3>User名</h3>
-    <%= @user.name %>
-    <h3>自己紹介</h3>
-
-    <% if @user.body.present? %>
-      <p><%= simple_format @user.body %></p>
-    <% else %>
-      <p>自己紹介はありません</p>
-    <% end %>
-    
+    <table class="table table-striped">
+      <thead>
+      </thead>
+      <tbody>
+        <tr>
+          <th>名前:</th>
+          <th><%= @user.name %></th>
+        </tr>
+        <tr>
+          <th>自己紹介:</th>
+          <th>
+            <% if @user.body.present? %>
+              <p><%= simple_format @user.body %></p>
+            <% else %>
+              <p>自己紹介はありません</p>
+            <% end %>
+          </th>
+        </tr>
+      </tbody>
+    </table>
     <% if current_user && current_user == @user %>
       <%= link_to "自己紹介を編集", edit_user_path(@user), class: "btn btn-warning" %>
     <% end %>
   </div>
   <div class="col-md-8">
-    <%= render 'public/groups/groups', groups: @user.groups %>
+    <%= render 'public/groups/groups', groups: @groups %>
   </div>
 </div>
 
