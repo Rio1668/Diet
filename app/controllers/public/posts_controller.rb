@@ -29,7 +29,7 @@ class Public::PostsController < ApplicationController
     @post = Post.find(params[:id])
     start = @post.start_time.ago(2.weeks)
     finish = @post.start_time.since(2.weeks)
-    @posts = @post.user.posts.where(start_time: start..finish)
+    @posts = @post.user.posts.where(start_time: start..finish).order(start_time: :asc)
   end
   
   def edit
