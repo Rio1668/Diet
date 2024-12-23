@@ -4,6 +4,10 @@ class Admin::UsersController < ApplicationController
   
   def index
     @users = User.all
+    if params[:keyword].present?
+      @users = @users.where('name LIKE ?', "%#{ params[:keyword] }%").or(
+               @users.where('email LIKE ?', "%#{ params[:keyword] }%"))
+    end
   end
   
   def show

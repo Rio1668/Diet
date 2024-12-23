@@ -4,6 +4,7 @@ class Public::GroupsController < ApplicationController
   
   def index
     @groups = Group.all
+    @groups = @groups.where('name LIKE ?', "%#{ params[:keyword] }%") if params[:keyword].present?
   end
   
   def show

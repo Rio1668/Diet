@@ -14,6 +14,7 @@ class Public::UsersController < ApplicationController
 
   def index
     @users = User.all
+    @users = @users.where('name LIKE ?', "%#{ params[:keyword] }%") if params[:keyword].present?
   end
 
   def edit

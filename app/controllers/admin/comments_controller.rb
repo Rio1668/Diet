@@ -4,6 +4,7 @@ class Admin::CommentsController < ApplicationController
   
   def index
     @comments = Comment.all
+    @comments = @comments.where('body LIKE ?', "%#{ params[:keyword] }%") if params[:keyword].present?
   end
   
   def destroy
